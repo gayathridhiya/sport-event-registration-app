@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { GET_ALL_EVENTS , GET_NUMBER_OF_SELECTED_EVENTS, ADD_EVENT_TO_SELECTION_AREA} from '../constants/eventConstants';
+import { GET_ALL_EVENTS , GET_NUMBER_OF_SELECTED_EVENTS, ADD_EVENT_TO_SELECTION_AREA , DELETE_EVENT_FROM_SELECTION} from '../constants/eventConstants';
 
 const initEvents = {
     numberCart:0,
@@ -24,6 +24,15 @@ function todoEvents(state = initEvents,action){
                 ...state,
                 _selectedEvents :  [...state._selectedEvents, action.payload],
                 numberCart: state.numberCart+1
+            }
+        }
+        case DELETE_EVENT_FROM_SELECTION:{
+            const updatedSeletectedEventsList = state._selectedEvents.filter( itm => itm.id !== action.payload.id);
+            const countToBeRemoved = updatedSeletectedEventsList.length
+            return{
+                ...state,
+                _selectedEvents : updatedSeletectedEventsList,
+                numberCart: countToBeRemoved
             }
         }
         default:

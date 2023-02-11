@@ -5,7 +5,7 @@ import "../styleSheets/EventCardStyle.css";
 import img1 from '../assets/img/ballBackground.gif';
 import img2 from '../assets/img/ballBackground2.gif';
 import img3 from '../assets/img/baseBallBg.gif';
-import { addEventToSelectionArea } from '../actions/eventAction';
+import { addEventToSelectionArea , deleteEvenFromSelectionArea} from '../actions/eventAction';
 import { connect } from 'react-redux';
 
 
@@ -34,8 +34,8 @@ class EventCard extends Component {
 
                             </Card.Text>
                             <div className="inOutStyle">
-                                <Button variant="success" className="inStyle" onClick={ () => this.props.addEventToSelectionArea ({item})}>Count me In</Button>
-                                <Button variant="danger" className="outStyle">Count me Out</Button>
+                                <Button variant="success" className="inStyle" onClick={ () => this.props.addEventToSelectionArea({item})}>Count me In</Button>
+                                <Button variant="danger" className="outStyle" onClick={ () =>  this.props.deleteEvenFromSelectionArea({item})}>Count me Out</Button>
                             </div>
                         </Card.Body>
                     </Card>
@@ -52,7 +52,8 @@ const mapStateToProps = state => {
 }
 const mapDispatchToProps = (dispatch) => {
     return {
-        addEventToSelectionArea: (item) => dispatch(addEventToSelectionArea(item))
+        addEventToSelectionArea: (item) => dispatch(addEventToSelectionArea(item)),
+        deleteEvenFromSelectionArea: (item) => dispatch(deleteEvenFromSelectionArea(item))
     }
 }
 
