@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import Card from 'react-bootstrap/Card';
 import "../styleSheets/EventCardStyle.css";
 import successBookIcon from "../assets/img/successBook.png";
+import Button from 'react-bootstrap/Button';
+import { deleteEvenFromSelectionArea} from '../actions/eventAction';
 
 class SelectedEvents extends Component {
     constructor(props) {
@@ -22,6 +24,7 @@ class SelectedEvents extends Component {
                         </div>
 
                         {this.props._selectedEvents && this.props._selectedEvents.map((item, idx) => (
+                            <div>
                             <Card key={idx} className="mb-2 successEventcardStyle">
                                 <div className="successEventCardImgStyle">
                                     <Card.Img variant="top" src={successBookIcon} />
@@ -35,9 +38,11 @@ class SelectedEvents extends Component {
                                     <Card.Text>
                                         <small><i className="far fa-calendar-alt text-primary me-2"></i>{item.item.start_time}</small>
                                     </Card.Text>
+                                    <Button variant="outline-danger" className="outStyle" onClick={ () =>  this.props.deleteEvenFromSelectionArea({item})}>Count me Out</Button>
                                 </Card.Body>
                             </Card>
-                           
+                            
+                            </div>
                         ))
                         }
 
@@ -60,4 +65,9 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, null)(SelectedEvents);
+const mapDispatchToProps = (dispatch) => {
+    return {
+        deleteEvenFromSelectionArea: (item) => dispatch(deleteEvenFromSelectionArea(item))
+    }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(SelectedEvents);

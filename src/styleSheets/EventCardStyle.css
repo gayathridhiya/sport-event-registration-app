@@ -1,5 +1,6 @@
 .cardBodyStyle{
     border-top: 1px solid rgb(210, 205, 205);
+    padding: 15px !important;
 }
 
 .linkStyle {
@@ -12,15 +13,14 @@
     justify-content: space-between;
 }
 
-/* .inStyle{
+.inStyle{
     flex:1;
-    float: left;
+    float: right;
 }
 
 .outStyle{
-    flex:1;
     float: right;
-} */
+} 
 
 /* .selectedEventStyle{
     display: flex;
@@ -46,9 +46,10 @@
 
 .successEventCardImgStyle{
     flex:1;
-    padding: 16px 0px!important;
+    padding: 15px 0px!important;
     min-width: 100px;
     min-height: 100px;
+    margin-left: 10px !important;
 }
 
 .successEventCardlinkStyle{
