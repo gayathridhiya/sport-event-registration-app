@@ -21,3 +21,46 @@
     flex:1;
     float: right;
 } */
+
+/* .selectedEventStyle{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+} */
+
+/* .selectedEventImgStyle{
+    flex:1;
+}
+
+.selectedEventAnchorStyle{
+    flex:3;
+    
+} */
+
+.successEventcardStyle{
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    flex-basis: 200px !important;
+}
+
+.successEventCardImgStyle{
+    flex:1;
+    padding: 16px 0px!important;
+    min-width: 100px;
+    min-height: 100px;
+}
+
+.successEventCardlinkStyle{
+    position: absolute;
+    top: 0px;
+    /* margin: auto; */
+    height: 30px !important;
+    /* width: 100px !important; */
+    text-decoration: none !important;
+}
+
+/* .successEventCardTitleStyle{
+    position: absolute;
+    top: 0;
+} */

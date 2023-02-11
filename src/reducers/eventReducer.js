@@ -3,8 +3,8 @@ import { GET_ALL_EVENTS , GET_NUMBER_OF_SELECTED_EVENTS, ADD_EVENT_TO_SELECTION_
 
 const initEvents = {
     numberCart:0,
-    Carts:[],
-    _events:[]
+    _events:[],
+    _selectedEvents: [],
 }
 
 function todoEvents(state = initEvents,action){
@@ -19,8 +19,10 @@ function todoEvents(state = initEvents,action){
                 ...state
             }
         case ADD_EVENT_TO_SELECTION_AREA:{
+           
             return{
                 ...state,
+                _selectedEvents :  [...state._selectedEvents, action.payload],
                 numberCart: state.numberCart+1
             }
         }

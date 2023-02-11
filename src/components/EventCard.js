@@ -34,7 +34,7 @@ class EventCard extends Component {
 
                             </Card.Text>
                             <div className="inOutStyle">
-                                <Button variant="success" onClick = {this.props.addEventToSelectionArea}className="inStyle">Count me In</Button>
+                                <Button variant="success" className="inStyle" onClick={ () => this.props.addEventToSelectionArea ({item})}>Count me In</Button>
                                 <Button variant="danger" className="outStyle">Count me Out</Button>
                             </div>
                         </Card.Body>
@@ -52,7 +52,7 @@ const mapStateToProps = state => {
 }
 const mapDispatchToProps = (dispatch) => {
     return {
-        addEventToSelectionArea: () => dispatch(addEventToSelectionArea())
+        addEventToSelectionArea: (item) => dispatch(addEventToSelectionArea(item))
     }
 }
 

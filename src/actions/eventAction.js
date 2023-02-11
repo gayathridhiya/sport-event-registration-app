@@ -30,7 +30,7 @@ export function getNoOfSelectedEvents(payload){
 export function addEventToSelectionArea(payload){
     return{
         type: ADD_EVENT_TO_SELECTION_AREA,
-        payload
+        payload : payload
     }
 }
 
