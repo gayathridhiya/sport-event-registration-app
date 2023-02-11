@@ -1,10 +1,17 @@
-import React, { Component } from 'react';
+import React, { Component, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { fetchEventRequest } from '../actions/eventAction';
 import SelectedEvents from './SelectedEvents';
 import SearchEvent from './SearchEvent';
 import EventCard from './EventCard';
 import Pagination from './Pagination';
+
+function Dummy(){
+  useEffect(()=>{
+
+    console.log("Hi")
+})
+}
 
 class EventHome extends Component {
   constructor(props) {
@@ -17,8 +24,10 @@ class EventHome extends Component {
   }
 
   render() {
+    
     const { _events } = this.props._events;
-    console.log(_events)
+    // console.log("events", _events)
+    // console.log(_events, typeof _events)
     if (_events && _events.length > 0) {
       return (
         <>
@@ -28,7 +37,7 @@ class EventHome extends Component {
                 <div className="col-lg-8">
                   <div className="row g-5">
                     {_events.map((item, index) => (
-                      <EventCard key={item.id} item={item} />
+                      <EventCard key={item.id} item={item} isDisabled={item.selectCount} />
                     ))
                     }
                     <Pagination />

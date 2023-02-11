@@ -9,28 +9,37 @@ const initEvents = {
 
 function todoEvents(state = initEvents,action){
     switch(action.type){
+        
         case GET_ALL_EVENTS: 
+            const updatedEventList = action.payload.map( itm => ( {...itm, selectCount : 0}));
             return{
                 ...state,
-                _events:action.payload
+                _events:updatedEventList
             }
         case GET_NUMBER_OF_SELECTED_EVENTS:
             return{
                 ...state
             }
         case ADD_EVENT_TO_SELECTION_AREA:{
-           
+            // console.log("reducers",state._events, action.payload)
+            // console.log("reducers1",state._events[0], action.payload.item)
             return{
                 ...state,
-                _selectedEvents :  [...state._selectedEvents, action.payload],
+                _events : state._events.map(
+                    (content, i) => content.id === action.payload.item.id ? { ...content, selectCount : content.selectCount+1} : content
+                ),
+                _selectedEvents :  [...state._selectedEvents, action.payload ],
                 numberCart: state.numberCart+1
             }
         }
         case DELETE_EVENT_FROM_SELECTION:{
-            const updatedSeletectedEventsList = state._selectedEvents.filter( itm => itm.id !== action.payload.id);
+            const updatedSeletectedEventsList = state._selectedEvents.filter( itm => itm.item.id !== action.payload.item.item.id);
             const countToBeRemoved = updatedSeletectedEventsList.length
             return{
                 ...state,
+                _events : state._events.map(
+                    (content, i) => content.id === action.payload.item.item.id ? { ...content, selectCount : 0} : content
+                ),
                 _selectedEvents : updatedSeletectedEventsList,
                 numberCart: countToBeRemoved
             }

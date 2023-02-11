@@ -17,8 +17,11 @@ class EventCard extends Component {
             imgArray: [img1, img2, img3]
         }
     }
+  
+
     render() {
-        const { item } = this.props;
+        const { item , isDisabled } = this.props;
+        console.log("isDisabled", isDisabled, item.id)
         const randomIndex = Math.floor(Math.random() * 3);
         return (
             <>
@@ -34,7 +37,7 @@ class EventCard extends Component {
 
                             </Card.Text>
                             <div className="inOutStyle">
-                                <Button variant="success" className="inStyle" onClick={ () => this.props.addEventToSelectionArea({item})}>Count me In</Button>
+                                <Button variant="success" className="inStyle" disabled={isDisabled} onClick={() => this.props.addEventToSelectionArea({ item })}>Count me In</Button>
                             </div>
                         </Card.Body>
                     </Card>
@@ -51,7 +54,7 @@ const mapStateToProps = state => {
 }
 const mapDispatchToProps = (dispatch) => {
     return {
-        addEventToSelectionArea: (item) => dispatch(addEventToSelectionArea(item)),
+        addEventToSelectionArea: (item) => dispatch(addEventToSelectionArea(item))
     }
 }
 

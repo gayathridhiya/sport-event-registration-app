@@ -11,9 +11,7 @@ class SelectedEvents extends Component {
         super(props)
     }
     render() {
-
-        console.log(this.props._selectedEvents)
-        console.log(this.props._selectedEvents.map(x => console.log(x.item)))
+        // console.log("s",this.props._selectedEvents)
         return (
             <>
                 {this.props._selectedEvents && this.props._selectedEvents.length !== 0 ?
