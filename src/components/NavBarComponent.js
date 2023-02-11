@@ -7,6 +7,7 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import { RxCalendar } from 'react-icons/rx';
 import SearchBar from "material-ui-search-bar";
+import  {connect} from  'react-redux';
 
 class NavBarComponent extends Component {
     constructor(props) {
@@ -58,7 +59,8 @@ class NavBarComponent extends Component {
                         <DropdownButton drop="down-centered"
                             title={
                                 <span>
-                                    <RxCalendar color="white" alignmentBaseline="center" className="mb-1" /> 0
+                                    <RxCalendar color="white" alignmentBaseline="center" className="mb-1" />
+                                    {this.props.numberCart}
                                 </span>
                             }
                             align="end"
@@ -83,5 +85,11 @@ class NavBarComponent extends Component {
     }
 }
 
-export default NavBarComponent;
+const mapStateToProps = state =>{
+    return{
+        numberCart:state._todoEvents.numberCart
+    }
+}
+
+export default connect(mapStateToProps,null)(NavBarComponent);
 
