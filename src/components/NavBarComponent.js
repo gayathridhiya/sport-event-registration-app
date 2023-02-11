@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { BrowserRouter, Routes, Route, NavLink } from "react-router-dom";
+import { BrowserRouter, Routes, Route, NavLink, Link } from "react-router-dom";
 import { Nav, Navbar, Container, FormControl, Badge } from "react-bootstrap";
 import brandLogo from "../assets/img/BrandLogo.png";
 import "../styleSheets/GlobalNavBarStyle.css";
@@ -38,7 +38,9 @@ class NavBarComponent extends Component {
                 <Container style={{ height: 50 }}>
                     <div className="innerContainer">
                         <Navbar.Brand className="brand mt-1">
+                            <Link to="/">
                             <img src={brandLogo} alt="Intuit"></img>
+                            </Link>
                             {/* <a >Event Scheduler</a> */}
                         </Navbar.Brand>
                         <Navbar.Text className="search">
@@ -56,7 +58,7 @@ class NavBarComponent extends Component {
                         <DropdownButton drop="down-centered"
                             title={
                                 <span>
-                                    <RxCalendar color="white" alignmentBaseline="center" className="mb-1" />
+                                    <RxCalendar color="white" alignmentBaseline="center" className="mb-1" /> 0
                                 </span>
                             }
                             align="end"
