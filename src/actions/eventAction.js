@@ -1,5 +1,5 @@
 import callAPI from '../api/callAPI';
-import { GET_ALL_EVENTS , GET_NUMBER_OF_SELECTED_EVENTS} from '../constants/eventConstants';
+import { GET_ALL_EVENTS , GET_NUMBER_OF_SELECTED_EVENTS, ADD_EVENT_TO_SELECTION_AREA} from '../constants/eventConstants';
 
 
 export const fetchEventRequest = () => {
@@ -22,6 +22,14 @@ export function getAllEvents(payload){
 export function getNoOfSelectedEvents(payload){
     return{
         type: GET_NUMBER_OF_SELECTED_EVENTS,
+        payload
+    }
+}
+
+// ADD_EVENT_TO_SELECTION_AREA
+export function addEventToSelectionArea(payload){
+    return{
+        type: ADD_EVENT_TO_SELECTION_AREA,
         payload
     }
 }

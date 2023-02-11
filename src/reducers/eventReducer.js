@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { GET_ALL_EVENTS , GET_NUMBER_OF_SELECTED_EVENTS} from '../constants/eventConstants';
+import { GET_ALL_EVENTS , GET_NUMBER_OF_SELECTED_EVENTS, ADD_EVENT_TO_SELECTION_AREA} from '../constants/eventConstants';
 
 const initEvents = {
     numberCart:0,
@@ -18,6 +18,12 @@ function todoEvents(state = initEvents,action){
             return{
                 ...state
             }
+        case ADD_EVENT_TO_SELECTION_AREA:{
+            return{
+                ...state,
+                numberCart: state.numberCart+1
+            }
+        }
         default:
             return state;
     }
