@@ -38,7 +38,6 @@ class EventHome extends Component {
                   <SearchEvent />
                   <SelectedEvents />
                 </div>
-
               </div>
             </div>
           </div>
