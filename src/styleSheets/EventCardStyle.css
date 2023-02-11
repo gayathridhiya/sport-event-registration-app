@@ -1,0 +1,23 @@
+.cardBodyStyle{
+    border-top: 1px solid rgb(210, 205, 205);
+}
+
+.linkStyle {
+    text-decoration: none !important;
+}
+
+.inOutStyle{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+/* .inStyle{
+    flex:1;
+    float: left;
+}
+
+.outStyle{
+    flex:1;
+    float: right;
+} */
