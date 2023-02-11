@@ -1,6 +1,12 @@
 import React, { Component } from "react";
 import { BrowserRouter, Routes, Route, NavLink } from "react-router-dom";
-import GlobalNavBarComponent from "./GlobalNavBarComponent";
+import { Nav, Navbar, Container, FormControl, Badge } from "react-bootstrap";
+import brandLogo from "../assets/img/BrandLogo.png";
+import "../styleSheets/GlobalNavBarStyle.css";
+import Dropdown from 'react-bootstrap/Dropdown';
+import DropdownButton from 'react-bootstrap/DropdownButton';
+import { RxCalendar } from 'react-icons/rx';
+import SearchBar from "material-ui-search-bar";
 
 class NavBarComponent extends Component {
     constructor(props) {
@@ -28,69 +34,49 @@ class NavBarComponent extends Component {
     render() {
         const click = this.state.click;
         return (
-            <>
-            
-                <div className={this.click ? "main-container" : ""} onClick={() => this.handleClose()} />
-                <nav className="navbar" onClick={e => e.stopPropagation()}>
-                    <div className="nav-container">
-                        <NavLink exact to="/" className="nav-logo">
-                            CodeBucks
-                            <i className="fa fa-code"></i>
-                        </NavLink>
-                        <ul className={click ? "nav-menu active" : "nav-menu"}>
-                            <li className="nav-item">
-                                <NavLink
-                                    exact
-                                    to="/"
-                                    activeClassName="active"
-                                    className="nav-links"
-                                    onClick={click ? () => this.handleClick() : null}
-                                >
-                                    Home
-                                </NavLink>
-                            </li>
-                            <li className="nav-item">
-                                <NavLink
-                                    exact
-                                    to="/"
-                                    activeClassName="active"
-                                    className="nav-links"
-                                    onClick={click ? () => this.handleClick() : null}
-                                >
-                                    About
-                                </NavLink>
-                            </li>
-                            <li className="nav-item">
-                                <NavLink
-                                    exact
-                                    to="/"
-                                    activeClassName="active"
-                                    className="nav-links"
-                                    onClick={click ? () => this.handleClick() : null}
-                                >
-                                    Blog
-                                </NavLink>
-                            </li>
-                            <li className="nav-item">
-                                <NavLink
-                                    exact
-                                    to="/"
-                                    activeClassName="active"
-                                    className="nav-links"
-                                    onClick={click ? () => this.handleClick() : null}
-                                >
-                                    Contact Us
-                                </NavLink>
-                            </li>
-                        </ul>
-                        <div className="nav-icon" onClick={() => this.handleClick()}>
-                            <i className={click ? "fa fa-times" : "fa fa-bars"}></i>
-                        </div>
+            <Navbar>
+                <Container style={{ height: 50 }}>
+                    <div className="innerContainer">
+                        <Navbar.Brand className="brand mt-1">
+                            <img src={brandLogo} alt="Intuit"></img>
+                            {/* <a >Event Scheduler</a> */}
+                        </Navbar.Brand>
+                        <Navbar.Text className="search">
+                            <SearchBar
+                                className="searchBar"
+                                placeholder="Search for Sports and Activities"
+                                // value={this.state.value}
+                                value=""
+                                // onChange={(newValue) => this.setState({ value: newValue })}
+                                // onRequestSearch={() => doSomethingWith(this.state.value)}
+                            />
+                        </Navbar.Text>
                     </div>
-                </nav>
-                
-            
-            </>
+                    <Nav>
+                        <DropdownButton drop="down-centered"
+                            title={
+                                <span>
+                                    <RxCalendar color="white" alignmentBaseline="center" className="mb-1" />
+                                </span>
+                            }
+                            align="end"
+                            variant="primary">
+                            {/* <RxCalendar >
+
+                            </RxCalendar> */}
+
+                            <Dropdown.Item eventKey="1" href="#/action-1" active>
+                                Action
+                            </Dropdown.Item>
+                            <Dropdown.Item eventKey="2" href="#/action-2">Another action</Dropdown.Item>
+                            <Dropdown.Item eventKey="3" href="#/action-3">Something else</Dropdown.Item>
+                            <Dropdown.Divider />
+                            <Dropdown.Item eventKey="4" href="#/action-4">Separated link</Dropdown.Item>
+
+                        </DropdownButton>
+                    </Nav>
+                </Container>
+            </Navbar>
         )
     }
 }

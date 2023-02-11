@@ -10,5 +10,28 @@
 } */
 
 .GlobalNav {
-    padding: 10px !important;
+    padding: 10px 10px 0px 10px !important;
+}
+
+.formStyle {
+    margin: auto;
+
+}
+.innerContainer {
+    display: flex;
+    flex-direction: row;
+}
+
+.brand{
+    flex:1;
+}
+.search{
+    flex:1;
+}
+
+.searchBar{
+    border: 0px;
+    width: 500px;
+    border-radius: 50px !important;
+    height: 35px !important;
 }
