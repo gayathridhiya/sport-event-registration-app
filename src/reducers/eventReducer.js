@@ -1,11 +1,14 @@
 import { combineReducers } from 'redux';
-import { GET_ALL_EVENTS , GET_NUMBER_OF_SELECTED_EVENTS, ADD_EVENT_TO_SELECTION_AREA , DELETE_EVENT_FROM_SELECTION } from '../constants/eventConstants';
+import { filteredEventsBasedOnCategory } from '../actions/eventAction';
+import { GET_ALL_EVENTS , GET_NUMBER_OF_SELECTED_EVENTS, ADD_EVENT_TO_SELECTION_AREA , DELETE_EVENT_FROM_SELECTION, FILTER_EVENTS_BASED_ON_A_CATEGORY } from '../constants/eventConstants';
 
 const initEvents = {
     totalSelected:0,
     _events:[],
     _selectedEvents: [],
-    uniqueCategories: []
+    uniqueCategories: [],
+    filteredEventsBasedOnCategory:[],
+    filterCategory : 'All Events'
 }
 
 function todoEvents(state = initEvents,action){
@@ -13,7 +16,7 @@ function todoEvents(state = initEvents,action){
         
         case GET_ALL_EVENTS: 
             const updatedEventList = action.payload.map( itm => ( {...itm, selectCount : 0}));
-            const uniqueCategoriesList = [ ... new Set( updatedEventList.map ( o => o.event_category))]
+            const uniqueCategoriesList = [ ... new Set( updatedEventList.map ( o => o.event_category)), 'All Events']
             console.log(uniqueCategoriesList)
             return{
                 ...state,
@@ -44,6 +47,21 @@ function todoEvents(state = initEvents,action){
                 ),
                 _selectedEvents : updatedSeletectedEventsList,
                 totalSelected: countToBeRemoved
+            }
+        }
+        case FILTER_EVENTS_BASED_ON_A_CATEGORY:{
+            let filteredEventsToBeDisplayed;
+            if (action.payload === "All Events") {
+                filteredEventsToBeDisplayed = state._events;
+            }
+            else{
+            filteredEventsToBeDisplayed = state._events.filter( itm => itm.event_category === action.payload);
+            }
+            console.log(filteredEventsToBeDisplayed)
+            return {
+                ...state,
+                filterCategory : action.payload,
+                filteredEventsBasedOnCategory : filteredEventsToBeDisplayed
             }
         }
         default:

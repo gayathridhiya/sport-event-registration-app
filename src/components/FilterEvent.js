@@ -1,4 +1,6 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { filteredEventsBasedOnCategory } from '../actions/eventAction';
 
 class FilterEvent extends Component {
     constructor(props) {
@@ -21,7 +23,7 @@ class FilterEvent extends Component {
                         {
                             filteredCategories && filteredCategories.map(
                                 (itm, idx) => (
-                                    <a key={idx} href="" className="btn btn-light m-1">{itm}</a>
+                                    <a key={idx} onClick = { () => this.props.filteredEventsBasedOnCategory(itm) } className="btn btn-light m-1">{itm}</a>
                                 )
                             )
                         }
@@ -34,4 +36,10 @@ class FilterEvent extends Component {
     }
 }
 
-export default FilterEvent
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        filteredEventsBasedOnCategory: (itm) => dispatch(filteredEventsBasedOnCategory(itm))
+    }
+  }
+export default connect(null, mapDispatchToProps)(FilterEvent);

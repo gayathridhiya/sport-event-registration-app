@@ -1,17 +1,10 @@
-import React, { Component, useEffect } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchEventRequest, getUniqueCategories } from '../actions/eventAction';
+import { fetchEventRequest } from '../actions/eventAction';
 import SelectedEvents from './SelectedEvents';
 import FilterEvent from './FilterEvent';
 import EventCard from './EventCard';
 import Pagination from './Pagination';
-
-function Dummy(){
-  useEffect(()=>{
-
-    console.log("Hi")
-})
-}
 
 class EventHome extends Component {
   
@@ -20,7 +13,7 @@ class EventHome extends Component {
     
       this.state = {
         currentPage : 1,
-        eventsPerPage : 4
+        eventsPerPage : 2
       }
     }
 
@@ -28,10 +21,6 @@ class EventHome extends Component {
     this.props.fetchEventRequest();
   }
 
-  // componentDidUpdate() {
-  //   this.props.getUniqueCategories();
-  //   console.log(this.props.getUniqueCategories())
-  // }
 
   changePage = (pageNumber) => {
     this.setState({
@@ -45,7 +34,9 @@ class EventHome extends Component {
     const { filteredCategories } = this.props.uniqueCategories;
     const indexOfLastEvent = this.state.currentPage * this.state.eventsPerPage;
     const indexOfFirstEvent = indexOfLastEvent - this.state.eventsPerPage;
-    const currentEvents = _events.slice(indexOfFirstEvent,indexOfLastEvent);
+    const currentEvents = this.props.filterCategory === "All Events" ? _events.slice(indexOfFirstEvent,indexOfLastEvent) :
+    this.props.filteredEventsBasedOnCategory.slice(indexOfFirstEvent,indexOfLastEvent) ;
+    const paginationTotalPages = this.props.filterCategory === "All Events" ? _events.length : this.props.filteredEventsBasedOnCategory.length;
     if (_events && _events.length > 0) {
       return (
         <>
@@ -59,7 +50,7 @@ class EventHome extends Component {
                     ))
                     }
                     <Pagination eventsPerPage = {this.state.eventsPerPage} 
-                                totalEvents= {_events.length}
+                                totalEvents= { paginationTotalPages }
                                 paginate = {(number) => this.changePage(number)}
                                 currPage = {this.state.currentPage}
                                 />
@@ -90,6 +81,8 @@ const mapStateToProps = state => {
     totalSelected: state._todoEvents.totalSelected,
     _events: state._todoEvents,
     uniqueCategories : state._todoEvents.uniqueCategories,
+    filteredEventsBasedOnCategory : state._todoEvents.filteredEventsBasedOnCategory,
+    filterCategory : state._todoEvents.filterCategory,
   }
 }
 const mapDispatchToProps = (dispatch) => {
