@@ -5,6 +5,7 @@ import SelectedEvents from './SelectedEvents';
 import FilterEvent from './FilterEvent';
 import EventCard from './EventCard';
 import Pagination from './Pagination';
+import ProgressBar from 'react-bootstrap/ProgressBar';
 
 class EventHome extends Component {
   
@@ -69,9 +70,7 @@ class EventHome extends Component {
       )
     }
     return (
-      <div className="row">
-        <h2>Loading...!</h2>
-      </div>
+      <ProgressBar variant="primary" now={60} />
     )
   }
 }

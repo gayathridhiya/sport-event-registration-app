@@ -2,19 +2,23 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
+import { Navigate } from "react-router-dom";
+
 
 class SubmissionModal extends Component {
     constructor(props) {
       super(props);
       this.state = {
-        showSubmisssionMessage : false
+        showSubmisssionMessage : false,
+        redirectToThankYouPage: false
       }
-      
     }
+
     render() {
-        
-        const { items } = this.props._selectedEvents;
-        console.log(this.props._selectedEvents, items)
+        const { dispatch, _selectedEvents } = this.props;
+        if (this.state.redirectToThankYouPage) {
+            return <Navigate to='/thank-you' replace={true}/>
+        }
 
         return (
             <Modal
@@ -31,7 +35,7 @@ class SubmissionModal extends Component {
                 <Modal.Body>
                     <h5>Please confirm your submission for the below events. <br/>Please click on submit to register.</h5>
                     {
-                        Object.values(this.props._selectedEvents).map( (itm,idx) => 
+                        Object.values(this.props._selectedevents).map( (itm,idx) => 
                         (
                             <li key={idx}>{itm.item.event_name}</li>
                         ))
@@ -42,7 +46,7 @@ class SubmissionModal extends Component {
                     </div>}
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button disabled = {this.state.showSubmisssionMessage} onClick={() => this.setState({ showSubmisssionMessage : true})}>Submit</Button>
+                    <Button disabled = {this.state.showSubmisssionMessage} onClick={() => this.setState({ showSubmisssionMessage : true, redirectToThankYouPage: true})}>Submit</Button>
                     
                     <Button onClick={() => this.props.onHide(false)}>Go Home</Button>
                 </Modal.Footer>
@@ -54,8 +58,7 @@ class SubmissionModal extends Component {
 
 const mapStateToProps = state => {
     return {
-        _selectedEvents: state._todoEvents._selectedEvents
+        _selectedevents: state._todoEvents._selectedEvents
     }
 }
 export default connect(mapStateToProps, null)(SubmissionModal);
-

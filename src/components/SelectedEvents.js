@@ -33,7 +33,7 @@ class SelectedEvents extends Component {
 
                         {this.props._selectedEvents && this.props._selectedEvents.map((item, idx) => (
                             <div>
-                            <Card key={idx} className="mb-2 successEventcardStyle">
+                            <Card key={item.idx} className="mb-2 successEventcardStyle">
                                 <div className="successEventCardImgStyle">
                                     <Card.Img variant="top" src={successBookIcon} />
                                     
@@ -58,15 +58,9 @@ class SelectedEvents extends Component {
                         <SubmissionModal show={this.state.showModal}
                                           onHide={() => this.setModalShow(false)}/>
                     </div>
-                    
-                    // </div>
+                
                     :
-                    // <div className="mb-5 wow slideInUp" data-wow-delay="0.1s">
-                    //     <div className="section-title section-title-sm position-relative pb-4 mb-4">
-                    //         <h3 className="mb-0 pl-7">No Selected Events</h3>
-                    //     </div>
-                    // </div>
-                    //no seletec events - replace with card
+                    
                     null
                 }
             </>
