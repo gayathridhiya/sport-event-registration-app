@@ -55,6 +55,7 @@ class EventHome extends Component {
                     <Pagination eventsPerPage = {this.state.eventsPerPage} 
                                 totalEvents= {_events.length}
                                 paginate = {(number) => this.changePage(number)}
+                                currPage = {this.state.currentPage}
                                 />
                   </div>
                 </div>
