@@ -13,7 +13,7 @@ class EventHome extends Component {
     
       this.state = {
         currentPage : 1,
-        eventsPerPage : 2
+        eventsPerPage : 4
       }
     }
 

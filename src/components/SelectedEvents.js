@@ -46,11 +46,13 @@ class SelectedEvents extends Component {
 
                     </div>
                     :
-                    <div className="mb-5 wow slideInUp" data-wow-delay="0.1s">
-                        <div className="section-title section-title-sm position-relative pb-4 mb-4">
-                            <h3 className="mb-0 pl-7">No Selected Events</h3>
-                        </div>
-                    </div>
+                    // <div className="mb-5 wow slideInUp" data-wow-delay="0.1s">
+                    //     <div className="section-title section-title-sm position-relative pb-4 mb-4">
+                    //         <h3 className="mb-0 pl-7">No Selected Events</h3>
+                    //     </div>
+                    // </div>
+                    //no seletec events - replace with card
+                    null
                 }
             </>
         )
