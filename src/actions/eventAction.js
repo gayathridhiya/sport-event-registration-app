@@ -1,5 +1,5 @@
 import callAPI from '../api/callAPI';
-import { GET_ALL_EVENTS , GET_NUMBER_OF_SELECTED_EVENTS, ADD_EVENT_TO_SELECTION_AREA, DELETE_EVENT_FROM_SELECTION} from '../constants/eventConstants';
+import { GET_ALL_EVENTS , GET_NUMBER_OF_SELECTED_EVENTS, ADD_EVENT_TO_SELECTION_AREA, DELETE_EVENT_FROM_SELECTION } from '../constants/eventConstants';
 
 
 export const fetchEventRequest = () => {
@@ -41,3 +41,4 @@ export function deleteEvenFromSelectionArea(payload){
         payload : payload
     }
 }
+

@@ -44,16 +44,7 @@ class NavBarComponent extends Component {
                             </Link>
                             {/* <a >Event Scheduler</a> */}
                         </Navbar.Brand>
-                        <Navbar.Text className="search">
-                            <SearchBar
-                                className="searchBar"
-                                placeholder="Search for Sports and Activities"
-                                // value={this.state.value}
-                                value=""
-                                // onChange={(newValue) => this.setState({ value: newValue })}
-                                // onRequestSearch={() => doSomethingWith(this.state.value)}
-                            />
-                        </Navbar.Text>
+                    
                     </div>
                     <Nav>
                         <DropdownButton drop="down-centered"

@@ -1,8 +1,8 @@
 import React, { Component, useEffect } from 'react';
 import { connect } from 'react-redux';
-import { fetchEventRequest } from '../actions/eventAction';
+import { fetchEventRequest, getUniqueCategories } from '../actions/eventAction';
 import SelectedEvents from './SelectedEvents';
-import SearchEvent from './SearchEvent';
+import FilterEvent from './FilterEvent';
 import EventCard from './EventCard';
 import Pagination from './Pagination';
 
@@ -27,6 +27,11 @@ class EventHome extends Component {
   componentDidMount() {
     this.props.fetchEventRequest();
   }
+
+  // componentDidUpdate() {
+  //   this.props.getUniqueCategories();
+  //   console.log(this.props.getUniqueCategories())
+  // }
 
   changePage = (pageNumber) => {
     this.setState({
@@ -60,7 +65,7 @@ class EventHome extends Component {
                   </div>
                 </div>
                 <div className="col-lg-4">
-                  <SearchEvent />
+                 {this.props.uniqueCategories && <FilterEvent filteredCategories = { this.props.uniqueCategories}/>}
                   <SelectedEvents />
                 </div>
               </div>
@@ -83,6 +88,7 @@ const mapStateToProps = state => {
   return {
     totalSelected: state._todoEvents.totalSelected,
     _events: state._todoEvents,
+    uniqueCategories : state._todoEvents.uniqueCategories
   }
 }
 const mapDispatchToProps = (dispatch) => {

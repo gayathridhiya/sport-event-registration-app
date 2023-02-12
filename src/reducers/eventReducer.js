@@ -1,10 +1,11 @@
 import { combineReducers } from 'redux';
-import { GET_ALL_EVENTS , GET_NUMBER_OF_SELECTED_EVENTS, ADD_EVENT_TO_SELECTION_AREA , DELETE_EVENT_FROM_SELECTION} from '../constants/eventConstants';
+import { GET_ALL_EVENTS , GET_NUMBER_OF_SELECTED_EVENTS, ADD_EVENT_TO_SELECTION_AREA , DELETE_EVENT_FROM_SELECTION } from '../constants/eventConstants';
 
 const initEvents = {
     totalSelected:0,
     _events:[],
     _selectedEvents: [],
+    uniqueCategories: []
 }
 
 function todoEvents(state = initEvents,action){
@@ -12,9 +13,12 @@ function todoEvents(state = initEvents,action){
         
         case GET_ALL_EVENTS: 
             const updatedEventList = action.payload.map( itm => ( {...itm, selectCount : 0}));
+            const uniqueCategoriesList = [ ... new Set( state._events.map ( o => o.event_category))]
+            console.log(uniqueCategoriesList)
             return{
                 ...state,
-                _events:updatedEventList
+                _events:updatedEventList,
+                uniqueCategories : uniqueCategoriesList
             }
         case GET_NUMBER_OF_SELECTED_EVENTS:
             return{
