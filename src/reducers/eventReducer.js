@@ -13,7 +13,7 @@ function todoEvents(state = initEvents,action){
         
         case GET_ALL_EVENTS: 
             const updatedEventList = action.payload.map( itm => ( {...itm, selectCount : 0}));
-            const uniqueCategoriesList = [ ... new Set( state._events.map ( o => o.event_category))]
+            const uniqueCategoriesList = [ ... new Set( updatedEventList.map ( o => o.event_category))]
             console.log(uniqueCategoriesList)
             return{
                 ...state,

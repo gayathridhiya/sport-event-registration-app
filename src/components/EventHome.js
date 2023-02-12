@@ -42,6 +42,7 @@ class EventHome extends Component {
   render() {
     
     const { _events } = this.props._events;
+    const { filteredCategories } = this.props.uniqueCategories;
     const indexOfLastEvent = this.state.currentPage * this.state.eventsPerPage;
     const indexOfFirstEvent = indexOfLastEvent - this.state.eventsPerPage;
     const currentEvents = _events.slice(indexOfFirstEvent,indexOfLastEvent);
@@ -65,7 +66,7 @@ class EventHome extends Component {
                   </div>
                 </div>
                 <div className="col-lg-4">
-                 {this.props.uniqueCategories && <FilterEvent filteredCategories = { this.props.uniqueCategories}/>}
+                  <FilterEvent filteredCategories = { this.props.uniqueCategories }/>
                   <SelectedEvents />
                 </div>
               </div>
@@ -88,7 +89,7 @@ const mapStateToProps = state => {
   return {
     totalSelected: state._todoEvents.totalSelected,
     _events: state._todoEvents,
-    uniqueCategories : state._todoEvents.uniqueCategories
+    uniqueCategories : state._todoEvents.uniqueCategories,
   }
 }
 const mapDispatchToProps = (dispatch) => {
