@@ -17,6 +17,32 @@ class EventCard extends Component {
             imgArray: [img1, img2, img3]
         }
     }
+
+    handleSelection = (evt_item) => {
+        const {item} = evt_item;
+        const currentEventStartTime = new Date(item.start_time).getTime();
+        const currentEventEndTime = new Date(item.end_time).getTime();
+        let isOverLapping = false;
+        for(let idx=0; idx< this.props._selectedEvents.length; idx++)
+            {
+                const startTime = new Date(this.props._selectedEvents[idx].item.start_time).getTime();
+                const endTime = new Date(this.props._selectedEvents[idx].item.end_time).getTime();
+                console.log(startTime, endTime)
+                if((startTime <= currentEventStartTime && currentEventStartTime <= endTime) ||
+                    (startTime <= currentEventEndTime && currentEventEndTime <= endTime) ){
+                    isOverLapping = true;
+                    break;
+                }
+
+            }
+        if(isOverLapping){
+            alert("Time Conflict, Please choose other event!")
+        }else{
+            this.props.addEventToSelectionArea(evt_item);
+        }
+        
+            
+    }
   
 
     render() {
@@ -33,11 +59,11 @@ class EventCard extends Component {
                             <Card.Title>{item.event_name}</Card.Title>
                             <Card.Text>
 
-                                <small><i className="far fa-calendar-alt text-primary me-2"></i>{item.start_time}</small>
-
+                                <small><i className="far fa-calendar-alt text-primary me-2"></i>{item.start_time}</small><br/>
+                                <small><i className="far fa-calendar-alt text-primary me-2"></i>{item.end_time}</small>
                             </Card.Text>
                             <div className="inOutStyle">
-                                <Button variant="success" className="inStyle" disabled={isDisabled} onClick={() => this.props.addEventToSelectionArea({ item })}>Count me In</Button>
+                                <Button variant="success" className="inStyle" disabled={isDisabled} onClick={() => this.handleSelection({ item })}>Count me In</Button>
                             </div>
                         </Card.Body>
                     </Card>
@@ -50,6 +76,7 @@ class EventCard extends Component {
 const mapStateToProps = state => {
     return {
         totalSelected: state._todoEvents.totalSelected,
+        _selectedEvents: state._todoEvents._selectedEvents
     }
 }
 const mapDispatchToProps = (dispatch) => {
