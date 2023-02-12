@@ -23,7 +23,8 @@ class FilterEvent extends Component {
                         {
                             filteredCategories && filteredCategories.map(
                                 (itm, idx) => (
-                                    <a key={idx} onClick = { () => this.props.filteredEventsBasedOnCategory(itm) } className="btn btn-light m-1">{itm}</a>
+                                    <a key={idx} onClick = { () => this.props.filteredEventsBasedOnCategory(itm) } 
+                                    className={this.props.filterCategory === itm ? "btn btn-light m-1 active" : "btn btn-light m-1"} >{itm}</a>
                                 )
                             )
                         }
@@ -35,11 +36,15 @@ class FilterEvent extends Component {
         )
     }
 }
-
+const mapStateToProps = state => {
+    return {
+      filterCategory : state._todoEvents.filterCategory,
+    }
+  }
 
 const mapDispatchToProps = (dispatch) => {
     return {
         filteredEventsBasedOnCategory: (itm) => dispatch(filteredEventsBasedOnCategory(itm))
     }
   }
-export default connect(null, mapDispatchToProps)(FilterEvent);
+export default connect(mapStateToProps, mapDispatchToProps)(FilterEvent);
