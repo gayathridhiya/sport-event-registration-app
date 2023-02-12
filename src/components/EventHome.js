@@ -14,20 +14,32 @@ function Dummy(){
 }
 
 class EventHome extends Component {
-  constructor(props) {
-    super(props)
-
-  }
+  
+    constructor(props) {
+      super(props);
+    
+      this.state = {
+        currentPage : 1,
+        eventsPerPage : 4
+      }
+    }
 
   componentDidMount() {
     this.props.fetchEventRequest();
   }
 
+  changePage = (pageNumber) => {
+    this.setState({
+      currentPage : pageNumber
+    })
+  }
+
   render() {
     
     const { _events } = this.props._events;
-    // console.log("events", _events)
-    // console.log(_events, typeof _events)
+    const indexOfLastEvent = this.state.currentPage * this.state.eventsPerPage;
+    const indexOfFirstEvent = indexOfLastEvent - this.state.eventsPerPage;
+    const currentEvents = _events.slice(indexOfFirstEvent,indexOfLastEvent);
     if (_events && _events.length > 0) {
       return (
         <>
@@ -36,11 +48,14 @@ class EventHome extends Component {
               <div className="row g-5">
                 <div className="col-lg-8">
                   <div className="row g-5">
-                    {_events.map((item, index) => (
+                    {currentEvents.map((item, index) => (
                       <EventCard key={item.id} item={item} isDisabled={item.selectCount || this.props.totalSelected>2} />
                     ))
                     }
-                    <Pagination />
+                    <Pagination eventsPerPage = {this.state.eventsPerPage} 
+                                totalEvents= {_events.length}
+                                paginate = {(number) => this.changePage(number)}
+                                />
                   </div>
                 </div>
                 <div className="col-lg-4">
