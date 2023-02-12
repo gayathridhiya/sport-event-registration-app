@@ -1,12 +1,8 @@
 import React, { Component } from "react";
-import { BrowserRouter, Routes, Route, NavLink, Link } from "react-router-dom";
-import { Nav, Navbar, Container, FormControl, Badge } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import { Navbar, Container } from "react-bootstrap";
 import brandLogo from "../assets/img/BrandLogo.png";
 import "../styleSheets/GlobalNavBarStyle.css";
-import Dropdown from 'react-bootstrap/Dropdown';
-import DropdownButton from 'react-bootstrap/DropdownButton';
-import { RxCalendar } from 'react-icons/rx';
-import SearchBar from "material-ui-search-bar";
 import  {connect} from  'react-redux';
 
 class NavBarComponent extends Component {
@@ -46,7 +42,7 @@ class NavBarComponent extends Component {
                         </Navbar.Brand>
                     
                     </div>
-                    <Nav>
+                    {/* <Nav>
                         <DropdownButton drop="down-centered"
                             title={
                                 <span>
@@ -56,9 +52,7 @@ class NavBarComponent extends Component {
                             }
                             align="end"
                             variant="primary">
-                            {/* <RxCalendar >
-
-                            </RxCalendar> */}
+                         
 
                             <Dropdown.Item eventKey="1" href="#/action-1" active>
                                 Action
@@ -69,7 +63,7 @@ class NavBarComponent extends Component {
                             <Dropdown.Item eventKey="4" href="#/action-4">Separated link</Dropdown.Item>
 
                         </DropdownButton>
-                    </Nav>
+                    </Nav> */}
                 </Container>
             </Navbar>
         )

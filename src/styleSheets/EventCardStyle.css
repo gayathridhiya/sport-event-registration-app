@@ -65,3 +65,12 @@
     position: absolute;
     top: 0;
 } */
+
+.registerButton{
+    display: block;
+    width: 100% !important;
+}
+
+.buttondiv{
+    visibility: visible; animation-delay: 0.1s; animation-name: slideInUp;
+}

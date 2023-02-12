@@ -5,18 +5,28 @@ import "../styleSheets/EventCardStyle.css";
 import successBookIcon from "../assets/img/successBook.png";
 import Button from 'react-bootstrap/Button';
 import { deleteEvenFromSelectionArea} from '../actions/eventAction';
+import SubmissionModal from './SubmissionModal';
 
 class SelectedEvents extends Component {
     constructor(props) {
-        super(props)
+        super(props);
+        this.state = {
+            showModal : false
+        }
+    }
+    setModalShow = (val) => {
+        this.setState({
+            showModal: val
+        })
     }
     render() {
         // console.log("s",this.props._selectedEvents)
         return (
             <>
                 {this.props._selectedEvents && this.props._selectedEvents.length !== 0 ?
+                    
                     <div className="mb-5 wow slideInUp" data-wow-delay="0.1s">
-
+                        
                         <div className="section-title section-title-sm pb-3 mb-4">
                             <h3 className="mb-0"> Selected Events</h3>
                         </div>
@@ -43,8 +53,13 @@ class SelectedEvents extends Component {
                             </div>
                         ))
                         }
-
+                        
+                        <Button variant='primary' onClick={() => this.setModalShow(true)} className="mt-2 registerButton">Register</Button>
+                        <SubmissionModal show={this.state.showModal}
+                                          onHide={() => this.setModalShow(false)}/>
                     </div>
+                    
+                    // </div>
                     :
                     // <div className="mb-5 wow slideInUp" data-wow-delay="0.1s">
                     //     <div className="section-title section-title-sm position-relative pb-4 mb-4">
