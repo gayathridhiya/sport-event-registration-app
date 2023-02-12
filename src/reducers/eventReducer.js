@@ -2,7 +2,7 @@ import { combineReducers } from 'redux';
 import { GET_ALL_EVENTS , GET_NUMBER_OF_SELECTED_EVENTS, ADD_EVENT_TO_SELECTION_AREA , DELETE_EVENT_FROM_SELECTION} from '../constants/eventConstants';
 
 const initEvents = {
-    numberCart:0,
+    totalSelected:0,
     _events:[],
     _selectedEvents: [],
 }
@@ -21,15 +21,13 @@ function todoEvents(state = initEvents,action){
                 ...state
             }
         case ADD_EVENT_TO_SELECTION_AREA:{
-            // console.log("reducers",state._events, action.payload)
-            // console.log("reducers1",state._events[0], action.payload.item)
             return{
                 ...state,
                 _events : state._events.map(
                     (content, i) => content.id === action.payload.item.id ? { ...content, selectCount : content.selectCount+1} : content
                 ),
                 _selectedEvents :  [...state._selectedEvents, action.payload ],
-                numberCart: state.numberCart+1
+                totalSelected: state.totalSelected+1
             }
         }
         case DELETE_EVENT_FROM_SELECTION:{
@@ -41,7 +39,7 @@ function todoEvents(state = initEvents,action){
                     (content, i) => content.id === action.payload.item.item.id ? { ...content, selectCount : 0} : content
                 ),
                 _selectedEvents : updatedSeletectedEventsList,
-                numberCart: countToBeRemoved
+                totalSelected: countToBeRemoved
             }
         }
         default:

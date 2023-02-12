@@ -37,7 +37,7 @@ class EventHome extends Component {
                 <div className="col-lg-8">
                   <div className="row g-5">
                     {_events.map((item, index) => (
-                      <EventCard key={item.id} item={item} isDisabled={item.selectCount} />
+                      <EventCard key={item.id} item={item} isDisabled={item.selectCount || this.props.totalSelected>2} />
                     ))
                     }
                     <Pagination />
@@ -65,7 +65,7 @@ class EventHome extends Component {
 
 const mapStateToProps = state => {
   return {
-    numberCart: state._todoEvents.numberCart,
+    totalSelected: state._todoEvents.totalSelected,
     _events: state._todoEvents,
   }
 }

@@ -60,7 +60,7 @@ class NavBarComponent extends Component {
                             title={
                                 <span>
                                     <RxCalendar color="white" alignmentBaseline="center" className="mb-1" />
-                                    {this.props.numberCart}
+                                    {this.props.totalSelected}
                                 </span>
                             }
                             align="end"
@@ -87,7 +87,7 @@ class NavBarComponent extends Component {
 
 const mapStateToProps = state =>{
     return{
-        numberCart:state._todoEvents.numberCart
+        totalSelected:state._todoEvents.totalSelected
     }
 }
 

@@ -49,7 +49,7 @@ class EventCard extends Component {
 
 const mapStateToProps = state => {
     return {
-        numberCart: state._todoEvents.numberCart,
+        totalSelected: state._todoEvents.totalSelected,
     }
 }
 const mapDispatchToProps = (dispatch) => {
