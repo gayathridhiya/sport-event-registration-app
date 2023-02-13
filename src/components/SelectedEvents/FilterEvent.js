@@ -16,7 +16,7 @@ class FilterEvent extends Component {
                 
                     <div className="mb-4 wow slideInUp" data-wow-delay="0.1s">
                     <div className="section-title section-title-sm position-relative pb-3 mb-2">
-                        <h3 className="mb-0 text-primary" >Choose your ground!</h3>
+                        <h4 className="mb-0 selectedTitle" >Choose your ground!</h4>
                     </div>
     
                     <div className="d-flex flex-wrap m-n1">

@@ -56,11 +56,11 @@ class EventCard extends Component {
                         <Card.Img className="cardImgStyle" variant="top" src={this.state.imgArray[randomIndex]} />
                         <a className="linkStyle position-absolute top-0 start-0 bg-info text-white mt-0 py-2 px-4" href="">{item.event_category}</a>
                         <Card.Body className="cardBodyStyle">
-                            <Card.Title>{item.event_name}</Card.Title>
+                            <Card.Title> <b>{item.event_name}</b></Card.Title>
                             <Card.Text>
 
-                                <small><i className="far fa-calendar-alt text-primary me-2"></i>{item.start_time}</small><br/>
-                                <small><i className="far fa-calendar-alt text-primary me-2"></i>{item.end_time}</small>
+                                <small><i className="far fa-calendar-alt text-primary me-2"></i>Event Starts at <b>{new Date(item.start_time).toDateString()} - {new Date(item.start_time).toLocaleString('en-US', { hour: 'numeric', hour12: true })}</b></small><br/>
+                                <small><i className="far fa-calendar-alt text-primary me-2"></i>Event Ends by <b>{new Date(item.end_time).toDateString()} - {new Date(item.end_time).toLocaleString('en-US', { hour: 'numeric', hour12: true })}</b></small>
                             </Card.Text>
                             <div className="inOutStyle">
                                 <Button variant={isDisabled ? "secondary" : "success"} className="inStyle" disabled={isDisabled} onClick={() => this.handleSelection({ item })}>Count me In</Button>

@@ -41,7 +41,7 @@ class EventHome extends Component {
     if (_events && _events.length > 0) {
       return (
         <>
-          <div className="container-fluid wow fadeInUp" data-wow-delay="0.1s">
+          <div className="container-fluid wow fadeInUp main" data-wow-delay="0.1s">
             <div className="container py-5">
               <div className="row g-5">
                 <div className="col-lg-8">
