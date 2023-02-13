@@ -34,7 +34,7 @@ class NavBarComponent extends Component {
         return(
         <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
         <Container>
-          <Navbar.Brand href="#home">inTuit
+          <Navbar.Brand href="#home"><b>inTuit</b> - <small>Unleash the Athelete in You!</small>
           
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
