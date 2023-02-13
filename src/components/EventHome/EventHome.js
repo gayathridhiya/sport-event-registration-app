@@ -41,13 +41,13 @@ class EventHome extends Component {
     if (_events && _events.length > 0) {
       return (
         <>
-          <div className="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
+          <div className="container-fluid wow fadeInUp" data-wow-delay="0.1s">
             <div className="container py-5">
               <div className="row g-5">
                 <div className="col-lg-8">
                   <div className="row g-5">
                     {currentEvents.map((item, index) => (
-                      <EventCard key={item.id} item={item} isDisabled={item.selectCount || this.props.totalSelected>2} />
+                      <EventCard key={item.id} item={item} isDisabled={item.selectCount} />
                     ))
                     }
                     <Pagination eventsPerPage = {this.state.eventsPerPage} 

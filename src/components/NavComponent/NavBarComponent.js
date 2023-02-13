@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { Navbar, Container } from "react-bootstrap";
 import brandLogo from "../../assets/img/BrandLogo.png";
-import "../../styleSheets/GlobalNavBarStyle.css";
+import "./NavBarStyle.css";
 import  {connect} from  'react-redux';
 
 class NavBarComponent extends Component {

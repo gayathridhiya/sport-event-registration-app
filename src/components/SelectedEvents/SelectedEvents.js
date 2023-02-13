@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Card from 'react-bootstrap/Card';
-import "../../styleSheets/EventCardStyle.css";
+import "./SelectedEvents.css";
 import successBookIcon from "../../assets/img/successBook.png";
 import Button from 'react-bootstrap/Button';
 import { deleteEvenFromSelectionArea} from '../../actions/eventAction';

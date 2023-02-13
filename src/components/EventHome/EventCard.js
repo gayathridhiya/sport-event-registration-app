@@ -63,7 +63,7 @@ class EventCard extends Component {
                                 <small><i className="far fa-calendar-alt text-primary me-2"></i>{item.end_time}</small>
                             </Card.Text>
                             <div className="inOutStyle">
-                                <Button variant="success" className="inStyle" disabled={isDisabled} onClick={() => this.handleSelection({ item })}>Count me In</Button>
+                                <Button variant={isDisabled ? "secondary" : "success"} className="inStyle" disabled={isDisabled} onClick={() => this.handleSelection({ item })}>Count me In</Button>
                             </div>
                         </Card.Body>
                     </Card>
