@@ -7,8 +7,8 @@ class ThankYou extends Component {
       <div  className="thankyouStyle">
         <div className="center-div">
           <div className='contents'>
-              <h1 className="text-center">Thank You!</h1>
-              <p className="text-center">Get Ready to Sweat, Laugh and Cheer at Your Sports Day Adventure!</p>
+              <h4 className="text-center" style={{color:"green"}}>Thank You for submitting!</h4>
+              <p className="text-center pt-10">Get Ready to Sweat, Laugh and Cheer at Your Sports Day Adventure</p>
           </div>
         </div>
       </div>

@@ -45,7 +45,10 @@ class SelectedEvents extends Component {
                                         <Card.Title className="successEventCardTitleStyle mt-0 bg-info text-white py-1 px-4">{item.item.event_category}</Card.Title>
                                         <Card.Title>{item.item.event_name}</Card.Title>
                                         <Card.Text>
-                                            <small><i className="far fa-calendar-alt text-primary me-2"></i>{item.item.start_time}</small>
+                                            <small>
+                                                <b>{new Date(item.item.start_time).toDateString()} {new Date(item.item.start_time).toLocaleString('en-US', { hour: 'numeric', hour12: true })} - </b><b>
+                                                 {new Date(item.item.end_time).toLocaleString('en-US', { hour: 'numeric', hour12: true })}</b></small>
+
                                         </Card.Text>
                                         <Button variant="outline-danger" className="outStyle" onClick={() => this.props.deleteEvenFromSelectionArea({ item })}>Count me Out</Button>
                                     </Card.Body>
@@ -67,14 +70,14 @@ class SelectedEvents extends Component {
                         key={variant}
                         className="mb-2 quoteStyle"
                     >
-                       
+
                         <Card.Body>
                             <Card.Title>
-                            Unleash the Athlete in You! 
+                                Unleash the Athlete in You!
 
                             </Card.Title>
                             <Card.Text>
-                            "Book your Sports Day Event now and experience the thrill of competition, camaraderie, and triumph!"
+                                "Book your Sports Day Event now and experience the thrill of competition, camaraderie, and triumph!"
                             </Card.Text>
                             {/* <Card.Text>
                                 Some quick example text to build on the card title and make up the

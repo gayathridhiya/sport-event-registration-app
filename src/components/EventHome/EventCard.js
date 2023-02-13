@@ -7,6 +7,7 @@ import img2 from '../../assets/img/ballBackground2.gif';
 import img3 from '../../assets/img/baseBallBg.gif';
 import { addEventToSelectionArea } from '../../actions/eventAction';
 import { connect } from 'react-redux';
+import AlertPop from '../Utils/AlertPop';
 
 
 class EventCard extends Component {
@@ -14,7 +15,8 @@ class EventCard extends Component {
         super(props)
 
         this.state = {
-            imgArray: [img1, img2, img3]
+            imgArray: [img1, img2, img3],
+            showAlert: false
         }
     }
 
@@ -36,7 +38,9 @@ class EventCard extends Component {
 
             }
         if(isOverLapping){
-            alert("Time Conflict, Please choose other event!")
+            this.setState({
+                showAlert : true
+            })
         }else{
             this.props.addEventToSelectionArea(evt_item);
         }
@@ -67,7 +71,11 @@ class EventCard extends Component {
                             </div>
                         </Card.Body>
                     </Card>
+                    
                 </div>
+                {
+                    this.state.showAlert && <AlertPop setShowAlert = {() => { this.setState({ showAlert : false})} }/>
+                }
             </>
         )
     }
