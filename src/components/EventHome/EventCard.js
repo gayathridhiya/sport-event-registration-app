@@ -41,8 +41,8 @@ class EventCard extends Component {
             const currentEventEndTime = new Date(item.end_time).getTime();
             let isOverLapping = false;
             for (let idx = 0; idx < this.props._selectedEvents.length; idx++) {
-                const startTime = new Date(this.props._selectedEvents[idx].item.start_time).getTime();
-                const endTime = new Date(this.props._selectedEvents[idx].item.end_time).getTime();
+                const startTime = new Date(this.props._selectedEvents[idx].start_time).getTime();
+                const endTime = new Date(this.props._selectedEvents[idx].end_time).getTime();
                 console.log(startTime, endTime)
                 if ((startTime <= currentEventStartTime && currentEventStartTime < endTime) ||
                     (startTime < currentEventEndTime && currentEventEndTime <= endTime)) {

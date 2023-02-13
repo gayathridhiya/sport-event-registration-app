@@ -41,14 +41,14 @@ class SubmissionModal extends Component {
                         (
                             // <li key={idx}>{itm.item.event_name}</li>
                             <div>
-                            <Card key={item.idx} className="mb-2 d-flex">
+                            <Card key={item.id} className="mb-2 d-flex">
                                 <Card.Body className="flex-1">
-                                    <Card.Title className="mt-0 bg-info text-white py-1 px-4">{item.item.event_category}</Card.Title>
-                                    <Card.Title>{item.item.event_name}</Card.Title>
+                                    <Card.Title className="mt-0 bg-info text-white py-1 px-4">{item.event_category}</Card.Title>
+                                    <Card.Title>{item.event_name}</Card.Title>
                                     <Card.Text>
-                                        <small><i className="far fa-calendar-alt text-primary me-2"></i>Event Starts at <b>{new Date(item.item.start_time).toDateString()} - {new Date(item.item.start_time).toLocaleString('en-US', { hour: 'numeric', hour12: true })}</b></small>
+                                        <small><i className="far fa-calendar-alt text-primary me-2"></i>Event Starts at <b>{new Date(item.start_time).toDateString()} - {new Date(item.start_time).toLocaleString('en-US', { hour: 'numeric', hour12: true })}</b></small>
                                         <br/>
-                                        <small><i className="far fa-calendar-alt text-primary me-2"></i>Event Ends by <b>{new Date(item.item.end_time).toDateString()} - {new Date(item.item.end_time).toLocaleString('en-US', { hour: 'numeric', hour12: true })}</b></small>
+                                        <small><i className="far fa-calendar-alt text-primary me-2"></i>Event Ends by <b>{new Date(item.end_time).toDateString()} - {new Date(item.end_time).toLocaleString('en-US', { hour: 'numeric', hour12: true })}</b></small>
                                     </Card.Text>
                                 </Card.Body>
                             </Card>

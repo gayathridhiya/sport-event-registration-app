@@ -45,7 +45,7 @@ export function deleteEvenFromSelectionArea(payload){
 
 //FILTER_EVENTS_BASED_ON_A_CATEGORY
 
-export function filteredEventsBasedOnCategory(payload){
+export function filteredEventsBasedOnCategories(payload){
     return {
         type: FILTER_EVENTS_BASED_ON_A_CATEGORY,
         payload : payload

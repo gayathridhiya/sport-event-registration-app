@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { filteredEventsBasedOnCategory } from '../../actions/eventAction';
+import { filteredEventsBasedOnCategories } from '../../actions/eventAction';
 import ball from '../../assets/img/ball.jpg';
 
 class FilterEvent extends Component {
@@ -11,7 +11,7 @@ class FilterEvent extends Component {
 
     render() {
         const { filteredCategories } = this.props;
-        console.log("filter",filteredCategories)
+        console.log("filter",filteredCategories, this.props.filterCategory)
         return (
             <>
                 
@@ -27,7 +27,7 @@ class FilterEvent extends Component {
                         {
                             filteredCategories && filteredCategories.map(
                                 (itm, idx) => (
-                                    <a key={idx} onClick = { () => this.props.filteredEventsBasedOnCategory(itm) } 
+                                    <a key={idx} onClick = { () => this.props.filteredEventsBasedOnCategories(itm) } 
                                     className={this.props.filterCategory === itm ? "btn btn-light m-1 active" : "btn btn-light m-1"} >{itm}</a>
                                 )
                             )
@@ -48,7 +48,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        filteredEventsBasedOnCategory: (itm) => dispatch(filteredEventsBasedOnCategory(itm))
+        filteredEventsBasedOnCategories: (itm) => dispatch(filteredEventsBasedOnCategories(itm))
     }
   }
 export default connect(mapStateToProps, mapDispatchToProps)(FilterEvent);

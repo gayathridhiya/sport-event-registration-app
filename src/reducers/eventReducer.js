@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { filteredEventsBasedOnCategory } from '../actions/eventAction';
+// import { filteredEventsBasedOnCategory } from '../actions/eventAction';
 import { GET_ALL_EVENTS , GET_NUMBER_OF_SELECTED_EVENTS, ADD_EVENT_TO_SELECTION_AREA , DELETE_EVENT_FROM_SELECTION, FILTER_EVENTS_BASED_ON_A_CATEGORY } from '../constants/eventConstants';
 
 const initEvents = {
@@ -21,6 +21,7 @@ function todoEvents(state = initEvents,action){
             return{
                 ...state,
                 _events:updatedEventList,
+                filteredEventsBasedOnCategory:updatedEventList,
                 uniqueCategories : uniqueCategoriesList
             }
         case GET_NUMBER_OF_SELECTED_EVENTS:
@@ -28,22 +29,30 @@ function todoEvents(state = initEvents,action){
                 ...state
             }
         case ADD_EVENT_TO_SELECTION_AREA:{
+            const item = {...action.payload.item, selectCount:1}
+            
             return{
                 ...state,
                 _events : state._events.map(
-                    (content, i) => content.id === action.payload.item.id ? { ...content, selectCount : content.selectCount+1} : content
+                    (content, i) => content.id === action.payload.item.id ? { ...content, selectCount : 1} : content
                 ),
-                _selectedEvents :  [...state._selectedEvents, action.payload ],
+                filteredEventsBasedOnCategory: state.filteredEventsBasedOnCategory.map(
+                    (content, i) => content.id === action.payload.item.id ? { ...content, selectCount : 1} : content
+                ),
+                _selectedEvents :  [...state._selectedEvents, item ],
                 totalSelected: state.totalSelected+1
             }
         }
         case DELETE_EVENT_FROM_SELECTION:{
-            const updatedSeletectedEventsList = state._selectedEvents.filter( itm => itm.item.id !== action.payload.item.item.id);
+            const updatedSeletectedEventsList = state._selectedEvents.filter( itm => itm.id !== action.payload.item.id);
             const countToBeRemoved = updatedSeletectedEventsList.length
             return{
                 ...state,
                 _events : state._events.map(
-                    (content, i) => content.id === action.payload.item.item.id ? { ...content, selectCount : 0} : content
+                    (content, i) => content.id === action.payload.item.id ? { ...content, selectCount : 0} : content
+                ),
+                filteredEventsBasedOnCategory: state.filteredEventsBasedOnCategory.map(
+                    (content, i) => content.id === action.payload.item.id ? { ...content, selectCount : 0} : content
                 ),
                 _selectedEvents : updatedSeletectedEventsList,
                 totalSelected: countToBeRemoved
@@ -57,7 +66,7 @@ function todoEvents(state = initEvents,action){
             else{
             filteredEventsToBeDisplayed = state._events.filter( itm => itm.event_category === action.payload);
             }
-            console.log(filteredEventsToBeDisplayed)
+            console.log("filter reducer",filteredEventsToBeDisplayed)
             return {
                 ...state,
                 filterCategory : action.payload,

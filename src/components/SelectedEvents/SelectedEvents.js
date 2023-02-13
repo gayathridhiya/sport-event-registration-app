@@ -20,7 +20,7 @@ class SelectedEvents extends Component {
         })
     }
     render() {
-        // console.log("s",this.props._selectedEvents)
+        console.log("s",this.props._selectedEvents)
         const variant = "Warning";
         return (
             <>
@@ -34,20 +34,20 @@ class SelectedEvents extends Component {
 
                         {this.props._selectedEvents && this.props._selectedEvents.map((item, idx) => (
                             <div>
-                                <Card key={item.item.id} className="mb-2 successEventcardStyle">
+                                <Card key={item.id} className="mb-2 successEventcardStyle">
                                     <div className="successEventCardImgStyle">
                                         <Card.Img variant="top" src={successBookIcon} />
 
                                     </div>
                                     <Card.Body className="cardBodyStyle">
-                                        {/* <a className="successEventCardlinkStyle bg-info text-white py-1 px-4" href="">{item.item.event_category}</a> */}
+                                        {/* <a className="successEventCardlinkStyle bg-info text-white py-1 px-4" href="">{item.event_category}</a> */}
 
-                                        <Card.Title className="successEventCardTitleStyle mt-0 bg-info text-white py-1 px-4">{item.item.event_category}</Card.Title>
-                                        <Card.Title>{item.item.event_name}</Card.Title>
+                                        <Card.Title className="successEventCardTitleStyle mt-0 bg-info text-white py-1 px-4">{item.event_category}</Card.Title>
+                                        <Card.Title>{item.event_name}</Card.Title>
                                         <Card.Text>
                                             <small>
-                                                <b>{new Date(item.item.start_time).toDateString()} {new Date(item.item.start_time).toLocaleString('en-US', { hour: 'numeric', hour12: true })} - </b><b>
-                                                 {new Date(item.item.end_time).toLocaleString('en-US', { hour: 'numeric', hour12: true })}</b></small>
+                                                <b>{new Date(item.start_time).toDateString()} {new Date(item.start_time).toLocaleString('en-US', { hour: 'numeric', hour12: true })} - </b><b>
+                                                 {new Date(item.end_time).toLocaleString('en-US', { hour: 'numeric', hour12: true })}</b></small>
 
                                         </Card.Text>
                                         <Button variant="outline-danger" className="outStyle" onClick={() => this.props.deleteEvenFromSelectionArea({ item })}>Count me Out</Button>

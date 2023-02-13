@@ -32,15 +32,15 @@ class EventHome extends Component {
   render() {
     
     const { _events } = this.props._events;
+    console.log(_events)
     const { filteredCategories } = this.props.uniqueCategories;
     const indexOfLastEvent = this.state.currentPage * this.state.eventsPerPage;
     const indexOfFirstEvent = indexOfLastEvent - this.state.eventsPerPage;
-    const currentEvents = this.props.filterCategory === "All Events" ? _events.slice(indexOfFirstEvent,indexOfLastEvent) :
-    this.props.filteredEventsBasedOnCategory.slice(indexOfFirstEvent,indexOfLastEvent) ;
+    const currentEvents = this.props.filteredEventsBasedOnCategory.slice(indexOfFirstEvent,indexOfLastEvent) ;
     const paginationTotalPages = this.props.filterCategory === "All Events" ? _events.length : this.props.filteredEventsBasedOnCategory.length;
     
     console.log("event home", this.props.filteredEventsBasedOnCategory)
-    if (_events && _events.length > 0) {
+    if (currentEvents && currentEvents.length > 0) {
       return (
         <>
           <div className="container-fluid wow fadeInUp main" data-wow-delay="0.1s">
