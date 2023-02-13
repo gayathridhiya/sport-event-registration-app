@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import './ThankYou.css';
 
 class ThankYou extends Component {
+  constructor(props) {
+    super(props)
+
+  }
   render() {
     return (
       <div  className="thankyouStyle">

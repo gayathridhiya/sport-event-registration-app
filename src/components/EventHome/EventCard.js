@@ -16,41 +16,61 @@ class EventCard extends Component {
 
         this.state = {
             imgArray: [img1, img2, img3],
-            showAlert: false
+            showAlert: {
+                alert: false,
+                alertHeading : "",
+                alertMsg: "",
+
+            }
         }
     }
 
     handleSelection = (evt_item) => {
-        const {item} = evt_item;
-        const currentEventStartTime = new Date(item.start_time).getTime();
-        const currentEventEndTime = new Date(item.end_time).getTime();
-        let isOverLapping = false;
-        for(let idx=0; idx< this.props._selectedEvents.length; idx++)
-            {
+        if (this.props.totalSelected === 3) {
+            this.setState({
+                showAlert: {
+                    alert: true,
+                    alertHeading : "MAXIMUM EVENTS EXCEEDED",
+                    alertMsg: "You have already selected maximum number of events. Please unselect an event from Selected Section and try adding again."
+                }
+            })
+        }
+        else {
+            const { item } = evt_item;
+            const currentEventStartTime = new Date(item.start_time).getTime();
+            const currentEventEndTime = new Date(item.end_time).getTime();
+            let isOverLapping = false;
+            for (let idx = 0; idx < this.props._selectedEvents.length; idx++) {
                 const startTime = new Date(this.props._selectedEvents[idx].item.start_time).getTime();
                 const endTime = new Date(this.props._selectedEvents[idx].item.end_time).getTime();
                 console.log(startTime, endTime)
-                if((startTime <= currentEventStartTime && currentEventStartTime < endTime) ||
-                    (startTime < currentEventEndTime && currentEventEndTime <= endTime) ){
+                if ((startTime <= currentEventStartTime && currentEventStartTime < endTime) ||
+                    (startTime < currentEventEndTime && currentEventEndTime <= endTime)) {
                     isOverLapping = true;
                     break;
                 }
 
             }
-        if(isOverLapping){
-            this.setState({
-                showAlert : true
-            })
-        }else{
-            this.props.addEventToSelectionArea(evt_item);
+            if (isOverLapping) {
+                this.setState({
+                    showAlert: {
+                        alert: true,
+                        alertHeading : "TIME CONFLICT",
+                        alertMsg: "You have already selected an event which conflicts with the current event. Please unselect the event from Selected Section and try adding again."
+                    }
+                })
+            }
+            else {
+                this.props.addEventToSelectionArea(evt_item);
+            }
         }
-        
-            
+
+
     }
-  
+
 
     render() {
-        const { item , isDisabled } = this.props;
+        const { item, isDisabled } = this.props;
         console.log("isDisabled", isDisabled, item.id)
         const randomIndex = Math.floor(Math.random() * 3);
         return (
@@ -63,7 +83,7 @@ class EventCard extends Component {
                             <Card.Title> <b>{item.event_name}</b></Card.Title>
                             <Card.Text>
 
-                                <small><i className="far fa-calendar-alt text-primary me-2"></i>Event Starts at <b>{new Date(item.start_time).toDateString()} - {new Date(item.start_time).toLocaleString('en-US', { hour: 'numeric', hour12: true })}</b></small><br/>
+                                <small><i className="far fa-calendar-alt text-primary me-2"></i>Event Starts at <b>{new Date(item.start_time).toDateString()} - {new Date(item.start_time).toLocaleString('en-US', { hour: 'numeric', hour12: true })}</b></small><br />
                                 <small><i className="far fa-calendar-alt text-primary me-2"></i>Event Ends by <b>{new Date(item.end_time).toDateString()} - {new Date(item.end_time).toLocaleString('en-US', { hour: 'numeric', hour12: true })}</b></small>
                             </Card.Text>
                             <div className="inOutStyle">
@@ -71,10 +91,13 @@ class EventCard extends Component {
                             </div>
                         </Card.Body>
                     </Card>
-                    
+
                 </div>
                 {
-                    this.state.showAlert && <AlertPop setShowAlert = {() => { this.setState({ showAlert : false})} }/>
+                    this.state.showAlert.alert && <AlertPop show={this.state.showAlert.alert}
+                        alertMsg={this.state.showAlert.alertMsg}
+                        alertHeading={this.state.showAlert.alertHeading}
+                        setShowAlert={() => { this.setState({ showAlert: { alert: false,  alertHeading : "", alertMsg: "" } }) }} />
                 }
             </>
         )

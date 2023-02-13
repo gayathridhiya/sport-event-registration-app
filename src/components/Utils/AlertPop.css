@@ -1,0 +1,36 @@
+.alert_div{
+    top:0 !important;
+    left:0;
+    right:0;
+    z-index: 999 !important;
+}
+
+.alert {
+    padding: 20px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+  }
+  
+  .alert-success {
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
+    color: #3c763d;
+  }
+  
+  .alert-heading {
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+  .btn {
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+  
+  .btn-outline-success {
+    color: #3c763d;
+    background-color: transparent;
+    border-color: #3c763d;
+  }
+  

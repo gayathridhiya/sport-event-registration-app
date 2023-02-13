@@ -4,7 +4,7 @@ import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import { Navigate } from "react-router-dom";
 import Card from 'react-bootstrap/Card';
-import successBookIcon from "../../assets/img/successBook.png";
+import ThankYou from '../ThankYou/ThankYou';
 
 
 class SubmissionModal extends Component {
@@ -17,9 +17,9 @@ class SubmissionModal extends Component {
     }
 
     render() {
-        const { dispatch, _selectedEvents } = this.props;
+       
         if (this.state.redirectToThankYouPage) {
-            return <Navigate to='/thank-you' replace={true}/>
+           window.location.href="/thank-You";
         }
 
         return (

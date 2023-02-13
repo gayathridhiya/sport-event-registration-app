@@ -38,6 +38,8 @@ class EventHome extends Component {
     const currentEvents = this.props.filterCategory === "All Events" ? _events.slice(indexOfFirstEvent,indexOfLastEvent) :
     this.props.filteredEventsBasedOnCategory.slice(indexOfFirstEvent,indexOfLastEvent) ;
     const paginationTotalPages = this.props.filterCategory === "All Events" ? _events.length : this.props.filteredEventsBasedOnCategory.length;
+    
+    console.log("event home", this.props.filteredEventsBasedOnCategory)
     if (_events && _events.length > 0) {
       return (
         <>

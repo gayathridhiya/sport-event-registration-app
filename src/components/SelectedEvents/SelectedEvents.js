@@ -34,7 +34,7 @@ class SelectedEvents extends Component {
 
                         {this.props._selectedEvents && this.props._selectedEvents.map((item, idx) => (
                             <div>
-                                <Card key={item.idx} className="mb-2 successEventcardStyle">
+                                <Card key={item.item.id} className="mb-2 successEventcardStyle">
                                     <div className="successEventCardImgStyle">
                                         <Card.Img variant="top" src={successBookIcon} />
 
