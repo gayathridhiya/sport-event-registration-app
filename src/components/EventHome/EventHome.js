@@ -28,18 +28,25 @@ class EventHome extends Component {
       currentPage : pageNumber
     })
   }
+  componentDidUpdate(prevProps){
+    if(prevProps.filteredEventsBasedOnCategory.length != this.props.filteredEventsBasedOnCategory.length){
+this.setState({
+  currentPage : 1,
+})
+    }
+  }
 
   render() {
     
     const { _events } = this.props._events;
-    console.log(_events)
+
     const { filteredCategories } = this.props.uniqueCategories;
     const indexOfLastEvent = this.state.currentPage * this.state.eventsPerPage;
     const indexOfFirstEvent = indexOfLastEvent - this.state.eventsPerPage;
+    
     const currentEvents = this.props.filteredEventsBasedOnCategory.slice(indexOfFirstEvent,indexOfLastEvent) ;
     const paginationTotalPages = this.props.filterCategory === "All Events" ? _events.length : this.props.filteredEventsBasedOnCategory.length;
     
-    console.log("event home", this.props.filteredEventsBasedOnCategory)
     if (currentEvents && currentEvents.length > 0) {
       return (
         <>
