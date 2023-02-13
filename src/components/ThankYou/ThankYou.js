@@ -1,20 +1,21 @@
 import React, { Component } from 'react';
-import { Container, Row, Col } from 'react-bootstrap';
 import './ThankYou.css';
 
 class ThankYou extends Component {
   render() {
     return (
-      <Container>
-        <Row>
-          <Col lg={{ span: 8, offset: 2 }}>
-            <div className="thank-you-jumbotron jumbotron">
-              <h1 className="display-4 text-center">Thank You!</h1>
-              <p className="lead text-center">Your submission has been received and is being processed.</p>
+      <div className="container-fluid py-5 d-flex h-100">
+        <div className="container py-5">
+          <div className="container py-5">
+            <div className="container py-3">
+
+              <h1 className="text-center">Thank You!</h1>
+              <p className="lead text-center">Get Ready to Sweat, Laugh and Cheer at Your Next Sports Day Adventure!</p>
+
             </div>
-          </Col>
-        </Row>
-      </Container>
+          </div>
+        </div>
+      </div>
     );
   }
 }

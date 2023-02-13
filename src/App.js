@@ -12,7 +12,7 @@ function App() {
       <NavBarComponent/>
         <Routes>
           <Route exact path="/" element= {<EventHome/>}/>
-          <Route exact path="/#/thank-you" element= {<ThankYou/>}/>
+          <Route exact path="/thank-you" element= {<ThankYou/>}/>
         </Routes>
 
       </BrowserRouter>
