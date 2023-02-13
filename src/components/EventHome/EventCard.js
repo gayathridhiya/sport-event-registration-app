@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-import "../styleSheets/EventCardStyle.css";
-import img1 from '../assets/img/ballBackground.gif';
-import img2 from '../assets/img/ballBackground2.gif';
-import img3 from '../assets/img/baseBallBg.gif';
-import { addEventToSelectionArea } from '../actions/eventAction';
+import "./EventCardStyle.css";
+import img1 from '../../assets/img/ballBackground.gif';
+import img2 from '../../assets/img/ballBackground2.gif';
+import img3 from '../../assets/img/baseBallBg.gif';
+import { addEventToSelectionArea } from '../../actions/eventAction';
 import { connect } from 'react-redux';
 
 
@@ -52,8 +52,8 @@ class EventCard extends Component {
         return (
             <>
                 <div className="col-md-6 wow slideInUp" data-wow-delay="0.1s">
-                    <Card>
-                        <Card.Img variant="top" src={this.state.imgArray[randomIndex]} />
+                    <Card className="card">
+                        <Card.Img className="cardImgStyle" variant="top" src={this.state.imgArray[randomIndex]} />
                         <a className="linkStyle position-absolute top-0 start-0 bg-info text-white mt-0 py-2 px-4" href="">{item.event_category}</a>
                         <Card.Body className="cardBodyStyle">
                             <Card.Title>{item.event_name}</Card.Title>

@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Card from 'react-bootstrap/Card';
-import "../styleSheets/EventCardStyle.css";
-import successBookIcon from "../assets/img/successBook.png";
+import "../../styleSheets/EventCardStyle.css";
+import successBookIcon from "../../assets/img/successBook.png";
 import Button from 'react-bootstrap/Button';
-import { deleteEvenFromSelectionArea} from '../actions/eventAction';
-import SubmissionModal from './SubmissionModal';
+import { deleteEvenFromSelectionArea} from '../../actions/eventAction';
+import SubmissionModal from '../SubmissionModal/SubmissionModal';
 
 class SelectedEvents extends Component {
     constructor(props) {

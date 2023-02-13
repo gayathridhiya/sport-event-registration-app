@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchEventRequest } from '../actions/eventAction';
-import SelectedEvents from './SelectedEvents';
-import FilterEvent from './FilterEvent';
+import { fetchEventRequest } from '../../actions/eventAction';
+import SelectedEvents from '../SelectedEvents/SelectedEvents';
+import FilterEvent from '../SelectedEvents/FilterEvent';
 import EventCard from './EventCard';
-import Pagination from './Pagination';
+import Pagination from '../Utils/Pagination';
 import ProgressBar from 'react-bootstrap/ProgressBar';
 
 class EventHome extends Component {

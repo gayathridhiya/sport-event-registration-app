@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { Navbar, Container } from "react-bootstrap";
-import brandLogo from "../assets/img/BrandLogo.png";
-import "../styleSheets/GlobalNavBarStyle.css";
+import brandLogo from "../../assets/img/BrandLogo.png";
+import "../../styleSheets/GlobalNavBarStyle.css";
 import  {connect} from  'react-redux';
 
 class NavBarComponent extends Component {
@@ -42,28 +42,7 @@ class NavBarComponent extends Component {
                         </Navbar.Brand>
                     
                     </div>
-                    {/* <Nav>
-                        <DropdownButton drop="down-centered"
-                            title={
-                                <span>
-                                    <RxCalendar color="white" alignmentBaseline="center" className="mb-1" />
-                                    {this.props.totalSelected}
-                                </span>
-                            }
-                            align="end"
-                            variant="primary">
-                         
-
-                            <Dropdown.Item eventKey="1" href="#/action-1" active>
-                                Action
-                            </Dropdown.Item>
-                            <Dropdown.Item eventKey="2" href="#/action-2">Another action</Dropdown.Item>
-                            <Dropdown.Item eventKey="3" href="#/action-3">Something else</Dropdown.Item>
-                            <Dropdown.Divider />
-                            <Dropdown.Item eventKey="4" href="#/action-4">Separated link</Dropdown.Item>
-
-                        </DropdownButton>
-                    </Nav> */}
+                   
                 </Container>
             </Navbar>
         )

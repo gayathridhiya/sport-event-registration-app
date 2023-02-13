@@ -1,11 +1,9 @@
 import './App.css';
-import GlobalNavBarComponent from './components/GlobalNavBarComponent';
-import NavBarComponent from './components/NavBarComponent';
+import NavBarComponent from './components/NavComponent/NavBarComponent';
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import EventHome from './components/EventHome';
-import SeletedCartComponent from './components/SeletedCartComponent';
-import ThankYou from './components/ThankYou';
+import EventHome from './components/EventHome/EventHome';
+import ThankYou from './components/ThankYou/ThankYou';
 
 function App() {
   return (
@@ -14,7 +12,7 @@ function App() {
       <NavBarComponent/>
         <Routes>
           <Route exact path="/" element= {<EventHome/>}/>
-          <Route exact path="/thank-You" element= {<ThankYou/>}/>
+          <Route exact path="/#/thank-you" element= {<ThankYou/>}/>
         </Routes>
 
       </BrowserRouter>

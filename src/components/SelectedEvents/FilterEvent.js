@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { filteredEventsBasedOnCategory } from '../actions/eventAction';
+import { filteredEventsBasedOnCategory } from '../../actions/eventAction';
 
 class FilterEvent extends Component {
     constructor(props) {
