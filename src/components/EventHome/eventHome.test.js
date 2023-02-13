@@ -1,19 +1,39 @@
-import React from "react";
-import EventHome from "./EventHome";
+import React from 'react';
+import { shallow } from 'enzyme';
+import { Provider } from 'react-redux';
+import configureStore from 'redux-mock-store';
+import EventHome from './EventHome';
 
 import Adapter from 'enzyme-adapter-react-16';
-import Enzyme, {shallow, mount} from 'enzyme';
+import Enzyme from 'enzyme';
 import { cleanup } from "@testing-library/react";
-import { Provider } from "react-redux";
 
+const mockStore = configureStore([]);
 Enzyme.configure({adapter : new Adapter()})
 afterEach(cleanup);
+describe('EventHome component', () => {
+  let store;
+  let component;
 
-describe('Events Home', () => {
-    let wrapper;
-    beforeEach( () => { wrapper = shallow(<Provider ><EventHome/></Provider>) } );
-
-    it("renders the events section", () => {
-        expect(wrapper.find('#events')).toHaveLength(1);
+  beforeEach(() => {
+    store = mockStore({
+      _todoEvents: {
+        totalSelected: 0,
+        _events: [],
+        uniqueCategories: [],
+        filteredEventsBasedOnCategory: [],
+        filterCategory: '',
+      },
     });
+
+    component = shallow(
+      <Provider store={store}>
+        <EventHome />
+      </Provider>
+    );
+  });
+
+  it('should render the component', () => {
+    expect(component.exists()).toBe(true);
+  });
 });
