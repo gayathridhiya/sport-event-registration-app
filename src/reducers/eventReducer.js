@@ -44,6 +44,8 @@ function todoEvents(state = initEvents,action){
             }
         }
         case DELETE_EVENT_FROM_SELECTION:{
+            console.log(action.payload, state._events)
+            console.log(state._selectedEvents, state.filteredEventsBasedOnCategory)
             const updatedSeletectedEventsList = state._selectedEvents.filter( itm => itm.id !== action.payload.item.id);
             const countToBeRemoved = updatedSeletectedEventsList.length
             return{
@@ -55,7 +57,7 @@ function todoEvents(state = initEvents,action){
                     (content, i) => content.id === action.payload.item.id ? { ...content, selectCount : 0} : content
                 ),
                 _selectedEvents : updatedSeletectedEventsList,
-                totalSelected: countToBeRemoved
+                totalSelected: state.totalSelected -1
             }
         }
         case FILTER_EVENTS_BASED_ON_A_CATEGORY:{
