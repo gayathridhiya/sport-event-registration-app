@@ -83,8 +83,8 @@ class EventCard extends Component {
                             <Card.Title> <b>{item.event_name}</b></Card.Title>
                             <Card.Text>
 
-                                <small><i className="far fa-calendar-alt text-primary me-2"></i>Event Starts at <b>{new Date(item.start_time).toDateString()} - {new Date(item.start_time).toLocaleString('en-US', { hour: 'numeric', hour12: true })}</b></small><br />
-                                <small><i className="far fa-calendar-alt text-primary me-2"></i>Event Ends by <b>{new Date(item.end_time).toDateString()} - {new Date(item.end_time).toLocaleString('en-US', { hour: 'numeric', hour12: true })}</b></small>
+                                <small><i className="far fa-calendar-alt text-primary me-2"></i>Event Starts at <b>{item.start_time}</b></small><br />
+                                <small><i className="far fa-calendar-alt text-primary me-2"></i>Event Ends by <b>{item.end_time}</b></small>
                             </Card.Text>
                             <div className="inOutStyle">
                                 <Button variant={isDisabled ? "secondary" : "success"} className="inStyle" disabled={isDisabled} onClick={() => this.handleSelection({ item })}>Count me In</Button>

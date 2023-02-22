@@ -46,8 +46,8 @@ class SelectedEvents extends Component {
                                         <Card.Title>{item.event_name}</Card.Title>
                                         <Card.Text>
                                             <small>
-                                                <b>{new Date(item.start_time).toDateString()} {new Date(item.start_time).toLocaleString('en-US', { hour: 'numeric', hour12: true })} - </b><b>
-                                                 {new Date(item.end_time).toLocaleString('en-US', { hour: 'numeric', hour12: true })}</b></small>
+                                                <b>{item.start_time} to </b><b>
+                                                 {item.end_time.split(" ")[1]}</b></small>
 
                                         </Card.Text>
                                         <Button variant="outline-danger" className="outStyle" onClick={() => this.props.deleteEvenFromSelectionArea({ item })}>Count me Out</Button>

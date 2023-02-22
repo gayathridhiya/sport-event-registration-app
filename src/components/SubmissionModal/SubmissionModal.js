@@ -46,9 +46,9 @@ class SubmissionModal extends Component {
                                     <Card.Title className="mt-0 bg-info text-white py-1 px-4">{item.event_category}</Card.Title>
                                     <Card.Title>{item.event_name}</Card.Title>
                                     <Card.Text>
-                                        <small><i className="far fa-calendar-alt text-primary me-2"></i>Event Starts at <b>{new Date(item.start_time).toDateString()} - {new Date(item.start_time).toLocaleString('en-US', { hour: 'numeric', hour12: true })}</b></small>
+                                        <small><i className="far fa-calendar-alt text-primary me-2"></i>Event Starts at <b>{item.start_time} </b></small>
                                         <br/>
-                                        <small><i className="far fa-calendar-alt text-primary me-2"></i>Event Ends by <b>{new Date(item.end_time).toDateString()} - {new Date(item.end_time).toLocaleString('en-US', { hour: 'numeric', hour12: true })}</b></small>
+                                        <small><i className="far fa-calendar-alt text-primary me-2"></i>Event Ends by <b>{item.end_time} </b></small>
                                     </Card.Text>
                                 </Card.Body>
                             </Card>
